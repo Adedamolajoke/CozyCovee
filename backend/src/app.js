@@ -9,6 +9,17 @@ const verifyJWT = require("./middlewares/verifyJWT");
 const authRouter = require("./routes/auth.route");
 const http = require("http");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const { Server } = require("socket.io");
+const {
+  addUserToRoomController,
+  removeUserFromRoomController,
+} = require("./controllers/group.controller");
+const Message = require("./models/message.model");
+const Group = require("./models/group.model");
+const User = require("./models/user.model");
+const formatMessage = require("./utils/messages");
+const decodeToken = require("./utils/decodeToken");
 
 connectDB(process.env.DATABASE_URI);
 
