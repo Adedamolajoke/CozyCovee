@@ -3,8 +3,6 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import Register from './components/Register';
 import { useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Image } from 'react-native';
 import CustomButton from './components/utils/Button';
 import Welcome from './components/Welcome';
 import HealthRate from './components/HealthRate';
@@ -13,29 +11,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HealthGoals from './components/Healthgoals';
 import Hobby from './components/Hobby';
 import AllSet from './components/AlllSet';
+import Notification from './components/Notification';
+import ChatLineups from './components/chats/ChatLineups';
 
 
 
 export default function App() {
   const [isLogin, setisLogin] = useState(false)
-  const [username, setUsername] = useState('');
 
   const Stack = createStackNavigator();
 
-  useEffect(() => {
-    const retrieveData = async () => {
-      try {
-        const storedUsername = await AsyncStorage.getItem('user');
-        if (storedUsername) {
-          setUsername(storedUsername);
-        }
-      } catch (error) {
-        console.error('Error retrieving data:', error);
-      }
-    };
-
-    retrieveData();
-  }, [isLogin]);
 
   return (
     <>
@@ -55,6 +40,8 @@ export default function App() {
             <Stack.Screen name="goals" component={HealthGoals} />
             <Stack.Screen name="hobbys" component={Hobby} />
             <Stack.Screen name="allset" component={AllSet} />
+            <Stack.Screen name="notify" component={Notification} />
+            <Stack.Screen name="chats" component={ChatLineups} />
           </Stack.Navigator>
         </NavigationContainer>
        </>
