@@ -7,6 +7,10 @@ const errorHandlerMiddleware = require("./middlewares/error-handler");
 const routeNotFound = require("./middlewares/route-not-found");
 const verifyJWT = require("./middlewares/verifyJWT");
 const authRouter = require("./routes/auth.route");
+const goalRouter = require("./routes/goal.route");
+const groupRouter = require("./routes/group.route");
+const therapyRouter = require("./routes/therapy.route");
+const messageRouter = require("./routes/chat.route");
 const http = require("http");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -34,7 +38,12 @@ app.get("/", (req, res) => {
 });
 app.use("/api/v1/auth", authRouter);
 
+
 app.use(verifyJWT);
+app.use("/api/v1/goals", goalRouter);
+app.use("/api/v1/group", groupRouter);
+app.use("/api/v1/therapy", therapyRouter);
+app.use("/api/v1/messages", messageRouter);
 
 app.use(routeNotFound);
 app.use(errorHandlerMiddleware);

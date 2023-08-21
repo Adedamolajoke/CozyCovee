@@ -13,7 +13,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please provide a wallet address']
     },
-    refreshToken: [String]
+    refreshToken: [String],
+    subscribed: {
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = mongoose.model('User', userSchema)
