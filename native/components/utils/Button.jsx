@@ -4,12 +4,12 @@ import tw from "tailwind-react-native-classnames";
 import tailwind from "twrnc";
 import { LinearGradient } from "expo-linear-gradient";
 
-function CustomButton({ title, onPress }) {
+function CustomButton({ title, onPress, variant }) {
   const [isPressed, setIsPressed] = useState(false);
 
-  const gradientColors = title === "Skip" ? ["#FFFF", "#FFFF"] : ["#027579", "#14AE5C"];
+  const gradientColors = variant === "Skip" ? ["#FFFF", "#FFFF"] : ["#027579", "#14AE5C"];
 
-  const activeColors = title === "Skip" ? ["#FFFF", "#FFFF"] : ["#14AE5C", "#027579"];
+  const activeColors = variant === "Skip" ? ["#FFFF", "#FFFF"] : ["#14AE5C", "#027579"];
 
   const handlePressIn = () => {
     setIsPressed(true);
@@ -30,12 +30,12 @@ function CustomButton({ title, onPress }) {
         start={[0, 0.5]}
         end={[1, 0.5]}
         style={tailwind`px-10 py-3 rounded-lg w-[100%] ${isPressed ? "shadow-sm":""} ${
-          title === "Next" ? "" : "border-[0.7px] border-[#14AE5C]"
+          variant === "Next" ? "" : "border-[0.7px] border-[#14AE5C]"
         }`}
       >
         <Text
           style={tailwind`text-lg text-center ${
-            title === "Skip" ? "text-[#14AE5C]" : "text-white"
+            variant === "Skip" ? "text-[#14AE5C]" : "text-white"
           }`}
         >
           {title}
