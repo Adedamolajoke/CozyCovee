@@ -2,7 +2,6 @@ const { NotFound, BadRequestError } = require('../errors')
 const Session = require('../models/session.model')
 const User = require('../models/user.model')
 const { StatusCodes } = require('http-status-codes')
-// const sdk = require('api')('@spherepay/v1.0#3yb0txr48zllevo8yr');
 const moment = require("moment");
 const axios = require("axios")
 
@@ -59,6 +58,7 @@ const createPaymentLink = async (priceId) => {
             quantityMutable: false,
           },
         ],
+        requiresName: true,
       },
       config,
     );
@@ -89,17 +89,6 @@ const createSession = async (req, res) => {
     console.log("paymentLink", paymentLink.url);
 
     return res.status(StatusCodes.CREATED).json({ session, paymentLink })
-}
-
-const handleSuccessfulPayment = async (req, res) => {
-    const userId = req.id
-
-    const user = await User.findById(userId);
-    user.subscribed = true
-
-    await user.save()
-
-    return res.status(StatusCodes.OK).json({ message: "User subscribed!" })
 }
 
 module.exports = {

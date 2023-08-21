@@ -7,6 +7,7 @@ const errorHandlerMiddleware = require("./middlewares/error-handler");
 const routeNotFound = require("./middlewares/route-not-found");
 const verifyJWT = require("./middlewares/verifyJWT");
 const authRouter = require("./routes/auth.route");
+const webhookRouter = require("./routes/webhook.route");
 const goalRouter = require("./routes/goal.route");
 const groupRouter = require("./routes/group.route");
 const therapyRouter = require("./routes/therapy.route");
@@ -36,6 +37,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
     return res.send("Home page");
 });
+
+app.use("/api/v1/webhook", webhookRouter)
+
 app.use("/api/v1/auth", authRouter);
 
 

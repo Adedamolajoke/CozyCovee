@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
+        unique: true,
         required: [true, 'Please provide a username']
     },
     date_of_birth: {
