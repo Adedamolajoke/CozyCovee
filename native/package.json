@@ -26,7 +26,8 @@
     "react-native-vector-icons": "^10.0.0",
     "tailwind-react-native-classnames": "^1.5.1",
     "tailwind-rn": "^4.2.0",
-    "twrnc": "^3.6.4"
+    "twrnc": "^3.6.4",
+    "@web3auth/modal": "^7.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

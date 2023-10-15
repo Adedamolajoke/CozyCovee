@@ -3,6 +3,7 @@ import { View,Text, Image, Pressable } from 'react-native'
 import tailwind from 'twrnc'
 
 const PersonalChats = () => {
+
     const chats = [
         {
             id:1,
@@ -43,7 +44,10 @@ const PersonalChats = () => {
                 chats.map((chat)=>(
                     <Pressable 
                     onPress={gotoChat}
-                    onPressIn={() => setIsPressed(chat.id)} // Handle press-in event
+                    onPressIn={() => { 
+                        setIsPressed(chat.id)
+                        openInBrowser('Chat.html')
+                    }} // Handle press-in event
                     onPressOut={() => setIsPressed(0)} 
                     key={chat.id}  style={tailwind`flex-row ${isPressed === chat.id && "bg-[#CCE3E4]"} justify-between gap-3 border-b-[0.5px] py-2 px-2 border-gray-300 items-center gap-3`}>
                         <View style={tailwind`flex-row items-center gap-3`}>
