@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Pressable, Text, TextInput } from 'react-native'
+import { Pressable, Text, TextInput, Image } from 'react-native'
 import { View } from 'react-native'
 import tailwind from 'twrnc'
 import CheckBox from 'react-native-check-box'
@@ -41,11 +41,9 @@ const Hobby = ({navigation}) => {
 
 
   return (
-    <View style={tailwind`py-16 px-2 flex flex-col  gap-3`}>
+    <View style={tailwind`py-12 px-2 flex flex-col  gap-3`}>
       <View style={tailwind`flex flex-row justify-start items-center gap-3`}>
-        <View style={tailwind`h-[3px] w-12 bg-[#027579] `}></View>
-        <View style={tailwind`h-[3px] w-12 bg-[#027579] `}></View>
-        <View style={tailwind`h-[3px] w-12 bg-[#027579] `}></View>
+        <Image source={require('../assets/3.png')} />
       </View>
         <View style={tailwind`flex flex-col gap-3`}>
           <Text style={tailwind`font-semibold text-lg`}>Choose your hobbies of interest</Text>
@@ -55,7 +53,7 @@ const Hobby = ({navigation}) => {
            {
             goals.map((item)=>(
                 <View key={item.id} style={tailwind`flex flex-row border-[#B0B0B0] border-[0.7px] h-10 items-center px-2 rounded-md gap-4 `}>
-                    <CheckBox isChecked={isChecked === item.id} onClick={()=>setIsChecked(item.id)} checkBoxColor='#027579' checkedCheckBoxColor='#027579' />
+                    <CheckBox isChecked={isChecked === item.id} onClick={()=>setIsChecked(item.id)} checkBoxColor='#2377f1' checkedCheckBoxColor='#2377f1' />
                     <Text>{item.desc}</Text>
                 </View>
             ))
