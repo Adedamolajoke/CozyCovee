@@ -13,11 +13,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HealthGoals from './components/Healthgoals';
 import Hobby from './components/Hobby';
 import AllSet from './components/AlllSet';
-
-
+import ChatsScreen from './screens/ChatsScreen';
+import BottomNavigator from './components/BottomNavigator';
+import ChatScreen from './screens/ChatScreen';
+import VideoScreen from './screens/VideoScreen';
+import AudioScreen from './screens/AudioScreen';
 
 export default function App() {
-  const [isLogin, setisLogin] = useState(false)
+  const [isLogin, setisLogin] = useState(false);
   const [username, setUsername] = useState('');
 
   const Stack = createStackNavigator();
@@ -38,30 +41,33 @@ export default function App() {
   }, [isLogin]);
 
   return (
-    <>
-    {
-      !isLogin ? (
-        <View style={tw`p-4 py-10 flex items-center h-full`}> 
-          <Register setisLogin={setisLogin} />
-        </View>
-      ):(
-        <>
-          <NavigationContainer>
-          <Stack.Navigator 
-          screenOptions={{header: ()=> null}}
-          >
-            <Stack.Screen name="welcome" component={Welcome} />
-            <Stack.Screen name="health" component={HealthRate} />
-            <Stack.Screen name="goals" component={HealthGoals} />
-            <Stack.Screen name="hobbys" component={Hobby} />
-            <Stack.Screen name="allset" component={AllSet} />
-          </Stack.Navigator>
-        </NavigationContainer>
-       </>
-      )
-    }
-     </>
-   
+    // <>
+    // {
+    //   !isLogin ? (
+    //     <View style={tw`p-4 py-10 flex items-center h-full`}>
+    //       <Register setisLogin={setisLogin} />
+    //     </View>
+    //   ):(
+    //     <>
+    <NavigationContainer>
+    
+      <Stack.Navigator screenOptions={{ header: () => null }}>
+      <Stack.Screen name='audio' component={AudioScreen} />
+      <Stack.Screen name='video' component={VideoScreen} />
+        <Stack.Screen name='chats' component={BottomNavigator} />
+        <Stack.Screen name='welcome' component={Welcome} />
+        <Stack.Screen name='health' component={HealthRate} />
+        <Stack.Screen name='goals' component={HealthGoals} />
+        <Stack.Screen name='hobbys' component={Hobby} />
+        <Stack.Screen name='allset' component={AllSet} />
+        <Stack.Screen name='chatroom' component={ChatScreen} />
+        
+
+      </Stack.Navigator>
+    </NavigationContainer>
+    //   //  </>
+    //   )
+    // // }
+    // //  </>
   );
 }
-
