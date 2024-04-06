@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {
   Avatar,
+  GoldStar,
   NotifyIcon,
   SearchIcon,
   StarIcon,
@@ -174,7 +175,7 @@ const ChatsScreen = ({ navigation }) => {
                       height: 14,
                       width: 14,
                     }}
-                    source={StarIcon}
+                    source={GoldStar}
                   />
                   <Text
                     style={{

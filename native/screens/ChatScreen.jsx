@@ -16,6 +16,7 @@ import {
   BackGround,
   BackIcon,
   BlueAngle,
+  GoldStar,
   StarIcon,
   UpIcon,
   WhiteAngle,
@@ -103,7 +104,9 @@ const ChatScreen = ({ route, navigation }) => {
           gap: 12,
         }}
       >
-        <Image source={BackIcon} />
+        <Pressable onPress={() => navigation.goBack()}>
+          <Image source={BackIcon} />
+        </Pressable>
         <Image source={item.avatar} />
 
         <Text
@@ -116,7 +119,7 @@ const ChatScreen = ({ route, navigation }) => {
           {item.name}
         </Text>
         <View style={{ flexDirection: 'row', gap: 2 }}>
-          <Image source={StarIcon} style={{ width: 14, height: 14 }} />
+          <Image source={GoldStar} style={{ width: 14, height: 14 }} />
           <Text
             style={{
               fontSize: 14,

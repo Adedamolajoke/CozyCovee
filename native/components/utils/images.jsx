@@ -14,10 +14,21 @@ import BackIcon from '../../assets/chevron-back.png';
 import BackGround from '../../assets/background.png';
 import BlueAngle from '../../assets/blue-angle.png';
 import WhiteAngle from '../../assets/white-angle.png';
-import RightIcon from '../../assets/chevron-forward.png'
+import RightIcon from '../../assets/chevron-forward.png';
 import WebCamIcom from '../../assets/videocam.png';
-import MicIcon from '../../assets/mic.png'
-import SecondAvatar from '../../assets/avatar2.png'
+import MicIcon from '../../assets/mic.png';
+import SecondAvatar from '../../assets/avatar2.png';
+import BackgroundVideo from '../../assets/backhuman.png';
+import CallPerson from '../../assets/callperson.png';
+import ChatBubbleClear from '../../assets/chatbubbles-clear.png';
+import GoldStar from '../../assets/goldstar.png';
+import FilledStar from '../../assets/star-filled.png';
+import PeopleFilled from '../../assets/people-filled.png';
+import PeopleIcon from '../../assets/people.png';
+import StoreFront from '../../assets/storefront.png';
+import StoreFilled from '../../assets/storefront-filled.png';
+import CheckIcon from '../../assets/check.png';
+import GymIcon from '../../assets/gym.png';
 export {
   BellIcon,
   AddIcon,
@@ -39,4 +50,15 @@ export {
   WebCamIcom,
   MicIcon,
   SecondAvatar,
+  BackgroundVideo,
+  CallPerson,
+  ChatBubbleClear,
+  GoldStar,
+  FilledStar,
+  PeopleFilled,
+  PeopleIcon,
+  StoreFront,
+  StoreFilled,
+  CheckIcon,
+  GymIcon,
 };

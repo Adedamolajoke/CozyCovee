@@ -50,19 +50,16 @@ export default function App() {
     //   ):(
     //     <>
     <NavigationContainer>
-    
       <Stack.Navigator screenOptions={{ header: () => null }}>
-      <Stack.Screen name='audio' component={AudioScreen} />
-      <Stack.Screen name='video' component={VideoScreen} />
         <Stack.Screen name='chats' component={BottomNavigator} />
+        <Stack.Screen name='video' component={VideoScreen} />
+        <Stack.Screen name='audio' component={AudioScreen} />
         <Stack.Screen name='welcome' component={Welcome} />
         <Stack.Screen name='health' component={HealthRate} />
         <Stack.Screen name='goals' component={HealthGoals} />
         <Stack.Screen name='hobbys' component={Hobby} />
         <Stack.Screen name='allset' component={AllSet} />
         <Stack.Screen name='chatroom' component={ChatScreen} />
-        
-
       </Stack.Navigator>
     </NavigationContainer>
     //   //  </>
