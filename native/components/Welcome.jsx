@@ -24,8 +24,8 @@ const Welcome = ({navigation}) => {
     <View style={tailwind`p-4 py-12 flex gap-2 items-center h-full flex flex-col`}>
         <View style={tailwind`flex flex-row items-center justify-between w-full`}>
             <BackButton />
-            <Pressable onPress={skipProp}>
-                <Text style={tailwind`text-blue-500 text-lg underline`}>Skip</Text>
+            <Pressable onPress={skipProp} style={tailwind`w-full`}>
+                <Text style={tailwind`text-blue-500 text-lg underline text-right`}>Skip</Text>
             </Pressable>
         </View>
         

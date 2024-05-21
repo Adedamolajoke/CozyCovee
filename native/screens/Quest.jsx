@@ -1,0 +1,211 @@
+import React, { useEffect, useRef, useState } from 'react'
+import { View, Text, StyleSheet, Animated, VirtualizedList, Image, Pressable } from 'react-native'
+import tailwind from 'twrnc'
+import Header from '../components/Header'
+import {LinearGradient} from 'expo-linear-gradient'
+
+
+
+const FROM_COLOR = 'rgba(188, 36, 242, 1)';
+const TO_COLOR = 'rgba(36, 120, 242, 1)';
+const data = [
+  {
+    category: 'Exercise',
+    title: 'Monthly 50 Push ups',
+    days: '7 of 30',
+    id: 1
+  },
+  {
+    category: 'Exercise',
+    title: 'Monthly 50 Push ups',
+    days: '7 of 30',
+    id: 2
+  },
+  {
+    category: 'Exercise',
+    title: 'Monthly 50 Push ups',
+    days: '7 of 30',
+    id: 3
+  },
+  {
+    category: 'Exercise',
+    title: 'Monthly 50 Push ups',
+    days: '7 of 30',
+    id: 4
+  }
+]
+
+const friendsQuestData = [
+  {
+    category: 'Exercise',
+    title: 'Yoga',
+    id: 1
+  },
+  {
+    category: 'Exercise',
+    title: 'Amala Spots',
+    id: 2
+  },
+  {
+    category: 'Exercise',
+    title: 'Aerobics',
+    id: 3
+  },
+  {
+    category: 'Exercise',
+    title: 'Deadlifts',
+    id: 4
+  }
+]
+
+const Quest = ({ navigation }) => {
+  return (
+    <View  style={tailwind`bg-white h-full`}>
+        <View style={tailwind`mt-18 mb-3 `}>
+          <Header title={`Marketplace`}/>
+        </View>
+
+        <View style={[tailwind`mx-3 rounded-xl bg-red-500`]}>
+          <LinearGradient
+            start={{x: 0.0, y: 0.25}} end={{ x: 1, y: 1 }}
+            colors={[FROM_COLOR, TO_COLOR]}
+            style={tailwind`w-full rounded-xl pl-7 py-6` }
+          >
+            <Text style={tailwind`text-white font-bold text-3xl mb-1`}>
+              2 / 4
+            </Text>
+            <Text style={tailwind`text-white mb-4`}>
+              Challenges completed
+            </Text>
+            <View style={tailwind`w-[90%] h-2 bg-[rgba(255,255,255,0.14)] rounded`}>
+              <Animated.View  style={[StyleSheet.absoluteFill, tailwind`rounded`, {backgroundColor: "#8BED4F", width: '50%'}]}/>
+            </View>
+          </LinearGradient>
+        </View>
+
+        <View style={tailwind`mt-4`}>
+          <View>
+            <Text style={tailwind`text-lg font-bold ml-3 mb-1`}>
+              Personal Quests
+            </Text>
+            <View style={tailwind`h-[14rem]`}>
+              <VirtualizedList
+                  data={data}
+                  initialNumToRender={4}
+                  showsVerticalScrollIndicator={false} 
+                  renderItem={({item}) => (
+                    <>
+                    <Pressable 
+                      style={tailwind`flex flex-row ${item.id != 1 ? 'mt-4': 'mt-1'} mx-3 mb-4 gap-4 w-[80%]`}
+                      onPress={() => {
+                        navigation.navigate('Personal Quests')
+                      }}
+                    >
+                      <View style={tailwind`w-[35%] h-22`}>
+                        <Image source={require('../assets/quests.png')} style={tailwind`h-full w-full rounded-lg`}/>
+                      </View>
+                      <View style={tailwind`w-[70%]`}>
+                        <View>
+                          <Text style={tailwind`text-base font-semibold mb-1`}>
+                            {item.title}
+                          </Text>
+                          <View style={tailwind`mb-3`}>
+                            <Text style={tailwind`text-base text-[rgba(100,109,123,1)]`}>
+                              {item.category} | Days {item.days}
+                            </Text>
+                          </View>
+                          <View style={tailwind`w-[100%] h-2 bg-[#ECEDEF] rounded`}>
+                            <Animated.View  style={[StyleSheet.absoluteFill, tailwind`rounded`, {backgroundColor: "#2377F1", width: '50%'}]}/>
+                          </View>
+                        </View>
+                      </View>
+                    </Pressable>
+                    {item.id !== data.length && (
+                      <View style={tailwind`border-b-[1.5px] border-slate-100`}></View>
+                    )}
+                    </>
+
+                  )}
+                  keyExtractor={item => item.id}
+                  getItemCount={(data) => data.length}
+                  getItem={(data, index) => data[index]}
+                  vertical
+                  style={tailwind``}
+              />
+            </View>
+          </View>
+          <View>
+            <Text style={tailwind`text-lg font-bold ml-3 mb-1`}>
+              Friends Quests
+            </Text>
+            <View style={tailwind`h-[14rem]`}>
+              <VirtualizedList
+                  data={friendsQuestData}
+                  initialNumToRender={4}
+                  showsVerticalScrollIndicator={false} 
+                  renderItem={({item}) => (
+                    <>
+                    <Pressable 
+                      style={tailwind`flex flex-row ${item.id != 1 ? 'mt-4': 'mt-1'} mx-3 mb-4 gap-4 w-[80%]`}
+                      onPress={() => {
+                        navigation.navigate('Friends Quests')
+                      }}
+                    >
+                      <View style={tailwind`w-[35%] h-22`}>
+                        <Image source={require('../assets/quests.png')} style={tailwind`h-full w-full rounded-lg`}/>
+                      </View>
+                      <View style={tailwind`w-[70%]`}>
+                        <View>
+                          <Text style={tailwind`text-base font-semibold mb-1`}>
+                            {item.title}
+                          </Text>
+                          <View style={tailwind`mb-3`}>
+                            <Text style={tailwind`text-base text-[rgba(100,109,123,1)]`}>
+                              {item.category}
+                            </Text>
+                          </View>
+                          <View style={tailwind`w-[100%] h-2 bg-[#ECEDEF] rounded`}>
+                            <Animated.View  style={[StyleSheet.absoluteFill, tailwind`rounded`, {backgroundColor: "#2377F1", width: '10%'}]}/>
+                          </View>
+                        </View>
+                      </View>
+                    </Pressable>
+                    {item.id !== data.length && (
+                      <View style={tailwind`border-b-[1.5px] border-slate-100`}></View>
+                    )}
+                    </>
+
+                  )}
+                  keyExtractor={item => item.id}
+                  getItemCount={(data) => data.length}
+                  getItem={(data, index) => data[index]}
+                  vertical
+                  style={tailwind``}
+              />
+            </View>
+          </View>
+        </View>
+
+    </View>
+  )
+}
+
+export default Quest
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  headerContainer: {
+    marginTop: 18,
+    marginBottom: 3,
+  },
+  questContainer: {
+    backgroundColor: 'green',
+  },
+  questText: {
+    fontSize: 'lg',
+    fontWeight: 'bold',
+  },
+});
