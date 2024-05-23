@@ -66,7 +66,7 @@ const Chats = () => {
 
   return (
     <View style={tailwind`bg-white h-full`}>
-      <View style={tailwind`mt-18 mb-6 `}>
+      <View style={tailwind`mt-14 mb-6 `}>
           <Header title={`Chats`}/>
       </View>
 

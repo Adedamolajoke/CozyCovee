@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, getFocusedRouteNameFromRoute, useRoute } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HealthGoals from './components/Healthgoals';
 import Hobby from './components/Hobby';
@@ -11,7 +10,7 @@ import { AppNavigator, OnboardNavigator } from './Routes';
 
 
 export default function App() {
-
+  
   const Stack = createStackNavigator();
 
  

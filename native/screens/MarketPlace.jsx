@@ -105,7 +105,7 @@ const MarketPlace = () => {
 
   return (
     <View  style={tailwind`bg-white h-full`}>
-        <View style={tailwind`mt-18 mb-3 `}>
+        <View style={tailwind`mt-14 mb-3 `}>
           <Header title={`Marketplace`}/>
         </View>
 

@@ -25,7 +25,7 @@ const BackButton = () => {
     
   return (
     <Pressable 
-        style={tailwind`absolute`}
+        style={tailwind`absolute z-10`}
         onPress={() => navigation.goBack()}
     >
         <Image source={require('../../assets/chevron-back.png')} />

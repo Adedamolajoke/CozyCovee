@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Animated, VirtualizedList, Image, Pressable } f
 import tailwind from 'twrnc'
 import Header from '../components/Header'
 import {LinearGradient} from 'expo-linear-gradient'
+import ProgressBar from '../components/utils/ProgressBar'
 
 
 
@@ -13,24 +14,28 @@ const data = [
     category: 'Exercise',
     title: 'Monthly 50 Push ups',
     days: '7 of 30',
+    progress: 80,
     id: 1
   },
   {
     category: 'Exercise',
     title: 'Monthly 50 Push ups',
     days: '7 of 30',
+    progress: 50,
     id: 2
   },
   {
     category: 'Exercise',
     title: 'Monthly 50 Push ups',
     days: '7 of 30',
+    progress: 30,
     id: 3
   },
   {
     category: 'Exercise',
     title: 'Monthly 50 Push ups',
     days: '7 of 30',
+    progress: 70,
     id: 4
   }
 ]
@@ -39,21 +44,25 @@ const friendsQuestData = [
   {
     category: 'Exercise',
     title: 'Yoga',
+    progress: 10,
     id: 1
   },
   {
     category: 'Exercise',
     title: 'Amala Spots',
+    progress: 50,
     id: 2
   },
   {
     category: 'Exercise',
     title: 'Aerobics',
+    progress: 25,
     id: 3
   },
   {
     category: 'Exercise',
     title: 'Deadlifts',
+    progress: 30,
     id: 4
   }
 ]
@@ -61,11 +70,11 @@ const friendsQuestData = [
 const Quest = ({ navigation }) => {
   return (
     <View  style={tailwind`bg-white h-full`}>
-        <View style={tailwind`mt-18 mb-3 `}>
-          <Header title={`Marketplace`}/>
+        <View style={tailwind`mt-14 mb-3 `}>
+          <Header title={`Quest`}/>
         </View>
 
-        <View style={[tailwind`mx-3 rounded-xl bg-red-500`]}>
+        <View style={[tailwind`mx-3 mt-3 rounded-xl bg-red-500`]}>
           <LinearGradient
             start={{x: 0.0, y: 0.25}} end={{ x: 1, y: 1 }}
             colors={[FROM_COLOR, TO_COLOR]}
@@ -83,12 +92,12 @@ const Quest = ({ navigation }) => {
           </LinearGradient>
         </View>
 
-        <View style={tailwind`mt-4`}>
+        <View style={tailwind`mt-3`}>
           <View>
             <Text style={tailwind`text-lg font-bold ml-3 mb-1`}>
               Personal Quests
             </Text>
-            <View style={tailwind`h-[14rem]`}>
+            <View style={tailwind`max-h-[13rem]`}>
               <VirtualizedList
                   data={data}
                   initialNumToRender={4}
@@ -98,11 +107,11 @@ const Quest = ({ navigation }) => {
                     <Pressable 
                       style={tailwind`flex flex-row ${item.id != 1 ? 'mt-4': 'mt-1'} mx-3 mb-4 gap-4 w-[80%]`}
                       onPress={() => {
-                        navigation.navigate('Personal Quests')
+                        navigation.navigate('Personal Quests', {title: item.title, width: item.progress, days: item.days})
                       }}
                     >
-                      <View style={tailwind`w-[35%] h-22`}>
-                        <Image source={require('../assets/quests.png')} style={tailwind`h-full w-full rounded-lg`}/>
+                      <View>
+                        <Image source={require('../assets/quests.png')} style={tailwind`h-20 w-20 rounded-lg`}/>
                       </View>
                       <View style={tailwind`w-[70%]`}>
                         <View>
@@ -114,9 +123,7 @@ const Quest = ({ navigation }) => {
                               {item.category} | Days {item.days}
                             </Text>
                           </View>
-                          <View style={tailwind`w-[100%] h-2 bg-[#ECEDEF] rounded`}>
-                            <Animated.View  style={[StyleSheet.absoluteFill, tailwind`rounded`, {backgroundColor: "#2377F1", width: '50%'}]}/>
-                          </View>
+                          <ProgressBar width={item.progress} />
                         </View>
                       </View>
                     </Pressable>
@@ -138,7 +145,7 @@ const Quest = ({ navigation }) => {
             <Text style={tailwind`text-lg font-bold ml-3 mb-1`}>
               Friends Quests
             </Text>
-            <View style={tailwind`h-[14rem]`}>
+            <View style={tailwind`max-h-[10rem]`}>
               <VirtualizedList
                   data={friendsQuestData}
                   initialNumToRender={4}
@@ -146,13 +153,13 @@ const Quest = ({ navigation }) => {
                   renderItem={({item}) => (
                     <>
                     <Pressable 
-                      style={tailwind`flex flex-row ${item.id != 1 ? 'mt-4': 'mt-1'} mx-3 mb-4 gap-4 w-[80%]`}
+                      style={tailwind` flex flex-row ${item.id != 1 ? 'mt-4': 'mt-1'} mx-3 mb-4 gap-4 w-[80%]`}
                       onPress={() => {
-                        navigation.navigate('Friends Quests')
+                        navigation.navigate('Friends Quests', {title: item.title, width: item.progress})
                       }}
                     >
-                      <View style={tailwind`w-[35%] h-22`}>
-                        <Image source={require('../assets/quests.png')} style={tailwind`h-full w-full rounded-lg`}/>
+                      <View style={tailwind``}>
+                        <Image source={require('../assets/quests.png')} style={tailwind`h-20 w-20 rounded-lg`}/>
                       </View>
                       <View style={tailwind`w-[70%]`}>
                         <View>
@@ -164,9 +171,7 @@ const Quest = ({ navigation }) => {
                               {item.category}
                             </Text>
                           </View>
-                          <View style={tailwind`w-[100%] h-2 bg-[#ECEDEF] rounded`}>
-                            <Animated.View  style={[StyleSheet.absoluteFill, tailwind`rounded`, {backgroundColor: "#2377F1", width: '10%'}]}/>
-                          </View>
+                          <ProgressBar width={item.progress} />
                         </View>
                       </View>
                     </Pressable>

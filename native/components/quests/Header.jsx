@@ -10,7 +10,7 @@ const Header = ({title}) => {
     <View style={tailwind`flex-row ml-4 justify-between items-center`}>
        <BackButton />
        <View style={tailwind`w-[100%]`}>
-        <Text style={tailwind`text-center text-xl font-bold`} >{title}</Text>
+        <Text style={tailwind`text-center text-xl font-bold text-[#07172D]`} >{title}</Text>
        </View>
        
     </View>

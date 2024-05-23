@@ -6,7 +6,7 @@ import tailwind from 'twrnc'
 
 const Header = ({title}) => {
   return (
-    <View style={tailwind`flex flex-row items-center justify-between px-6 w-full pb-6 border-b-[1.5px] border-slate-300`}>
+    <View style={tailwind`flex flex-row items-center justify-between px-6 w-full pb-5 border-b-[1.5px] border-slate-100`}>
         <View >
             <Text style={tailwind`text-lg font-bold`}>{title}</Text>
         </View>
