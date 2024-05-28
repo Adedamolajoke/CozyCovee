@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { View, Text, StyleSheet, Animated, VirtualizedList, Image, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Animated, VirtualizedList, Image, Pressable, ScrollView, SectionList } from 'react-native'
 import tailwind from 'twrnc'
 import Header from '../components/Header'
 import {LinearGradient} from 'expo-linear-gradient'
@@ -37,6 +37,75 @@ const data = [
     days: '7 of 30',
     progress: 70,
     id: 4
+  }
+]
+
+const data1 = [
+  {
+    title: 'Personal Quests',
+    data: [
+      {
+        category: 'Exercise',
+        title: 'Monthly 50 Push ups',
+        days: '7 of 30',
+        progress: 80,
+        id: 1
+      },
+      {
+        category: 'Exercise',
+        title: 'Monthly 50 Push ups',
+        days: '7 of 30',
+        progress: 50,
+        id: 2
+      },
+      {
+        category: 'Exercise',
+        title: 'Monthly 50 Push ups',
+        days: '7 of 30',
+        progress: 30,
+        id: 3
+      },
+      {
+        category: 'Exercise',
+        title: 'Monthly 50 Push ups',
+        days: '7 of 30',
+        progress: 70,
+        id: 4
+      }
+    ]
+  }
+]
+
+const data2 = [
+  {
+    title: 'Friends Quests',
+    data:  [
+      {
+        category: 'Exercise',
+        title: 'Yoga',
+        progress: 10,
+        id: 1
+      },
+      {
+        category: 'Exercise',
+        title: 'Amala Spots',
+        progress: 50,
+        id: 2
+      },
+      {
+        category: 'Exercise',
+        title: 'Aerobics',
+        progress: 25,
+        id: 3
+      },
+      {
+        category: 'Exercise',
+        title: 'Deadlifts',
+        progress: 30,
+        id: 4
+      }
+    ]
+    
   }
 ]
 
@@ -92,7 +161,152 @@ const Quest = ({ navigation }) => {
           </LinearGradient>
         </View>
 
-        <View style={tailwind`mt-3`}>
+        <View style={[tailwind`mt-3 flex-1`, {height: 'fit-content'}]}>
+          <SectionList 
+            sections={[...data1, ...data2]}
+            renderItem={({item, section}) => {
+              console.log(section.title, 'title')
+              if (section.title === 'Personal Quests') {
+                return (
+                  <>
+                  <Pressable 
+                    style={tailwind`flex flex-row ${item.id != 1 ? 'mt-5': 'mt-1'} mx-3 mb-4 gap-4 w-[80%]`}
+                    onPress={() => {
+                      navigation.navigate('Personal Quests', {title: item.title, width: item.progress, days: item.days})
+                    }}
+                  >
+                    <View>
+                      <Image source={require('../assets/quests.png')} style={tailwind`h-20 w-20 rounded-lg`}/>
+                    </View>
+                    <View style={tailwind`w-[70%]`}>
+                      <View>
+                        <Text style={tailwind`text-base font-semibold mb-1`}>
+                          {item.title}
+                        </Text>
+                        <View style={tailwind`mb-3`}>
+                          <Text style={tailwind`text-base text-[rgba(100,109,123,1)]`}>
+                            {item.category} | Days {item.days}
+                          </Text>
+                        </View>
+                        <ProgressBar width={item.progress} />
+                      </View>
+                    </View>
+                  </Pressable>
+                  {item.id !== data.length && (
+                    <View style={tailwind`border-b-[1.5px] border-slate-100`}></View>
+                  )}
+                  </>
+                )
+              } else {
+                return (
+                  <>
+                    <Pressable 
+                      style={tailwind` flex flex-row ${item.id != 1 ? 'mt-4': 'mt-1'} mx-3 mb-1 gap-4 w-[80%]`}
+                      onPress={() => {
+                        navigation.navigate('Friends Quests', {title: item.title, width: item.progress})
+                      }}
+                    >
+                      <View style={tailwind``}>
+                        <Image source={require('../assets/quests.png')} style={tailwind`h-20 w-20 rounded-lg`}/>
+                      </View>
+                      <View style={tailwind`w-[70%]`}>
+                        <View>
+                          <Text style={tailwind`text-base font-semibold mb-1`}>
+                            {item.title}
+                          </Text>
+                          <View style={tailwind`mb-3`}>
+                            <Text style={tailwind`text-base text-[rgba(100,109,123,1)]`}>
+                              {item.category}
+                            </Text>
+                          </View>
+                          <ProgressBar width={item.progress} />
+                        </View>
+                      </View>
+                    </Pressable>
+                    {item.id !== data.length && (
+                      <View style={tailwind`border-b-[1.5px] border-slate-100`}></View>
+                    )}
+                    </>
+                )
+              }
+              // section.title === 'Personal Quests' ? (
+              
+              //     <>
+              //     <Pressable 
+              //       style={tailwind`flex flex-row ${item.id != 1 ? 'mt-4': 'mt-1'} mx-3 mb-4 gap-4 w-[80%]`}
+              //       onPress={() => {
+              //         navigation.navigate('Personal Quests', {title: item.title, width: item.progress, days: item.days})
+              //       }}
+              //     >
+              //       <View>
+              //         <Image source={require('../assets/quests.png')} style={tailwind`h-20 w-20 rounded-lg`}/>
+              //       </View>
+              //       <View style={tailwind`w-[70%]`}>
+              //         <View>
+              //           <Text style={tailwind`text-base font-semibold mb-1`}>
+              //             {item.title}
+              //           </Text>
+              //           <View style={tailwind`mb-3`}>
+              //             <Text style={tailwind`text-base text-[rgba(100,109,123,1)]`}>
+              //               {item.category} | Days {item.days}
+              //             </Text>
+              //           </View>
+              //           <ProgressBar width={item.progress} />
+              //         </View>
+              //       </View>
+              //     </Pressable>
+              //     {item.id !== data.length && (
+              //       <View style={tailwind`border-b-[1.5px] border-slate-100`}></View>
+              //     )}
+              //     </>
+              //   ) : (
+              //     <>
+              //       <Pressable 
+              //         style={tailwind` flex flex-row ${item.id != 1 ? 'mt-4': 'mt-1'} mx-3 mb-4 gap-4 w-[80%]`}
+              //         onPress={() => {
+              //           navigation.navigate('Friends Quests', {title: item.title, width: item.progress})
+              //         }}
+              //       >
+              //         <View style={tailwind``}>
+              //           <Image source={require('../assets/quests.png')} style={tailwind`h-20 w-20 rounded-lg`}/>
+              //         </View>
+              //         <View style={tailwind`w-[70%]`}>
+              //           <View>
+              //             <Text style={tailwind`text-base font-semibold mb-1`}>
+              //               {item.title}
+              //             </Text>
+              //             <View style={tailwind`mb-3`}>
+              //               <Text style={tailwind`text-base text-[rgba(100,109,123,1)]`}>
+              //                 {item.category}
+              //               </Text>
+              //             </View>
+              //             <ProgressBar width={item.progress} />
+              //           </View>
+              //         </View>
+              //       </Pressable>
+              //       {item.id !== data.length && (
+              //         <View style={tailwind`border-b-[1.5px] border-slate-100`}></View>
+              //       )}
+              //       </>
+              //   )
+
+              }
+            }
+            renderSectionHeader={({section})=>(
+              <View style={tailwind`bg-white`}>
+                <Text style={tailwind`text-lg font-bold ml-3 mb-1`}>
+                  {section.title}
+                </Text>
+              </View>
+            )}
+            showsVerticalScrollIndicator = {false}
+            keyExtractor={item=>item.id}
+            stickySectionHeadersEnabled
+          
+          />
+        </View>
+
+        {/* <ScrollView nestedScrollEnabled={true} style={tailwind`mt-3`}>
           <View>
             <Text style={tailwind`text-lg font-bold ml-3 mb-1`}>
               Personal Quests
@@ -189,7 +403,7 @@ const Quest = ({ navigation }) => {
               />
             </View>
           </View>
-        </View>
+        </ScrollView> */}
 
     </View>
   )

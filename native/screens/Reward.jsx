@@ -44,11 +44,11 @@ const Reward = () => {
               <Image source={require('../assets/star.png')} style={tailwind`w-6 h-6`}/>
               <Text style={tailwind`text-4xl font-bold text-[#FFFDFD]`}> 45</Text>
             </View>
-            <Pressable style={tailwind`p-2 bg-[rgba(255,253,253,0.14)] w-38 items-center rounded-lg mt-3  mr-6`}>
-              <Text style={tailwind`text-lg text-[#FFFDFD]`}>View Insights</Text>
+            <Pressable style={tailwind`p-3 bg-[rgba(255,253,253,0.14)] items-center rounded-lg mt-3  mr-6`}>
+              <Text style={tailwind`text-base text-[#FFFDFD]`}>View Insights</Text>
             </Pressable>
           </View>
-          <Text style={tailwind`text-[rgba(255,253,253,0.66)] text-lg`}>Points Earned</Text>
+          <Text style={tailwind`text-[rgba(255,253,253,0.66)] text-base`}>Points Earned</Text>
         </LinearGradient>
       </View>
       <View style={tailwind`bg-[rgba(240,241,243,1)] p-3 m-3 rounded-lg flex-row justify-center items-center gap-2`}>
@@ -66,11 +66,11 @@ const Reward = () => {
           </View>
         </View>
         <Pressable style={tailwind`h-14 flex-row mx-3 mt-4 mb-5 border-[1.5px] border-[#DADCDF] shadow-lg rounded-lg bg-white justify-center items-center gap-2 text-center`}>
-          <Text style={tailwind`font-semibold text-base`}>Update Activity</Text>
+          <Text style={tailwind`font-semibold text-base`}>Claim in: 12hrs 32mins</Text>
         </Pressable>
       </View>
       <View>
-        <Text style={tailwind`text-lg font-bold ml-3 mb-1 mt-2`}>Completed challenges</Text>
+        <Text style={tailwind`text-lg font-bold ml-3 mb-1 mt-3`}>Completed challenges</Text>
         <View style={tailwind`max-h-30`}>
             <VirtualizedList
                 data={data}
