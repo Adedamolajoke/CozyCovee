@@ -3,32 +3,31 @@ import { Pressable, Text, TextInput, Image } from 'react-native'
 import { View } from 'react-native'
 import tailwind from 'twrnc'
 import CheckBox from 'react-native-check-box'
-import CustomButton from './utils/Button'
+import CustomButton from '../utils/Button'
 
-const Hobby = ({navigation}) => {
+const HealthGoals = ({navigation}) => {
   const [healthRateText, setHealthRateText] = useState(null)
-  const [isChecked, setIsChecked] = useState(null)
 
   const goals = [
     {
         id:1,
-        desc:"Reading"
+        desc:"I want to manage anxiety"
     },
     {
         id:2,
-        desc:"Yoga"
+        desc:"I want to build my self confidence"
     },
     {
         id:3,
-        desc:"Speaking to someone"
+        desc:"I want to cope with depression "
     },
     {
         id:4,
-        desc:"Meditation"
+        desc:"I want to enhance mindfullness"
     },
     {
         id:5,
-        desc:"Listening to music"
+        desc:"I want to improve sleep quality"
     },
   ]
   const onChangeText = (text) => {
@@ -36,18 +35,19 @@ const Hobby = ({navigation}) => {
   }
   const continueHealth = (n) => {
     console.log(healthRateText)
-    navigation.navigate("allset")
+    navigation.navigate("hobbys")
   }
+  const [isChecked, setIsChecked] = useState(null)
 
 
   return (
-    <View style={tailwind`py-12 px-2 flex flex-col  gap-3`}>
+    <View style={tailwind`pt-12 px-2 flex flex-col  gap-3`}>
       <View style={tailwind`flex flex-row justify-start items-center gap-3`}>
-        <Image source={require('../assets/3.png')} />
+        <Image source={require('../../assets/2.png')} />
       </View>
         <View style={tailwind`flex flex-col gap-3`}>
-          <Text style={tailwind`font-semibold text-lg`}>Choose your hobbies of interest</Text>
-          <Text style={tailwind`font-medium text-[15px] text-gray-500 leading-[30px]`}>This would help us suggest relevant context and communities that align with your preference</Text>
+          <Text style={tailwind`font-semibold text-lg`}>Choose your health goals</Text>
+          <Text style={tailwind`font-medium text-[15px] text-gray-500 leading-[30px]`}>What are the mental health goals you would like to achieve on this platform</Text>
         </View>
         <View style={tailwind`flex flex-col gap-4 `}>
            {
@@ -75,4 +75,4 @@ const Hobby = ({navigation}) => {
   )
 }
 
-export default Hobby
+export default HealthGoals

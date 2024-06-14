@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
-import CustomButton from './utils/Button'
+import CustomButton from '../utils/Button'
 import tw from 'tailwind-react-native-classnames';
 import { Button } from 'react-native';
 import { Image } from 'react-native';
 import tailwind from 'twrnc';
 import { ScrollView } from 'react-native';
-import BackButton from './utils/BackButton';
+import BackButton from '../utils/BackButton';
 
 const Welcome = ({navigation}) => { 
     const [next, setNext] = useState(false)
@@ -34,7 +34,7 @@ const Welcome = ({navigation}) => {
           <Text style={tailwind`text-gray-400 font-medium text-[16px]`}>You are special. Please complete the simple steps to have a personalized experience</Text>
         </View>
         <View style={tailwind`mt-3`}>
-            <Image source={require("../assets/welcome1.png")} style={tw`rounded-xl`} />
+            <Image source={require("../../assets/welcome1.png")} style={tw`rounded-xl`} />
         </View>
         <View style={style.button}>
             <CustomButton title="Next" onPress={nextProp} />

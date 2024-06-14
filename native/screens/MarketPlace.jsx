@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { View, Text, VirtualizedList, Pressable, Image } from 'react-native'
-import Header from '../components/Header'
+import Header from '../components/onboarding/Header'
 import tailwind from 'twrnc'
+import { Layout } from './Layout'
 
 
 
@@ -104,11 +105,9 @@ const MarketPlace = () => {
   }
 
   return (
-    <View  style={tailwind`bg-white h-full`}>
-        <View style={tailwind`mt-14 mb-3 `}>
-          <Header title={`Marketplace`}/>
-        </View>
-
+    <Layout>
+      <View  style={tailwind`bg-white h-full`}>
+        <Header title={`Marketplace`}/>
         <View style={tailwind`mx-3`}>
           <VirtualizedList
                 horizontal={true}
@@ -152,7 +151,9 @@ const MarketPlace = () => {
             />
         </View>
 
-    </View>
+      </View>
+    </Layout>
+    
   )
 }
 

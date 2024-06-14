@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Button, VirtualizedList, Image, Dimensions } from 'react-native'
-import { TextInput } from 'react-native'
+import { VirtualizedList, Image, Dimensions } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { View,Text } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import tailwind from 'twrnc'
-import CustomButton from './utils/Button'
-import tw from 'tailwind-react-native-classnames'
-import Paginator from './utils/Paginator'
+import CustomButton from '../utils/Button'
+import Paginator from '../utils/Paginator'
 
 
 const data = [
@@ -15,19 +12,19 @@ const data = [
     id: 1,
     title: 'Welcome to mental wellness buddy',
     content: 'Discover a safe & supportive space for your mental wellness journey.',
-    img: require(`../assets/auth.png`)
+    img: require(`../../assets/auth.png`)
   },
   {
     id: 2,
     title: 'You get to express yourself anonymously',
     content: 'Create a pseudonym & express yourself authentically without revealing personal details.',
-    img: require(`../assets/auth2.png`)
+    img: require(`../../assets/auth2.png`)
   },
   {
     id: 3,
     title: 'Start a conservation with our AI chatbot & Counsellors',
     content: 'Engage in confidental chat sessions with our AI chatbot & chosen counsellor to receive support.',
-    img: require(`../assets/auth3.png`)
+    img: require(`../../assets/auth3.png`)
   }
 ]
 
@@ -71,8 +68,8 @@ const Onboard = ({navigation}) => {
           listRef.current.scrollToIndex({index: 0})
         }
   
-      }, 10000)
-      setTimeout( function() {clearInterval(i)}, 10050)
+      }, 5000)
+      setTimeout( function() {clearInterval(i)}, 5050)
     }, [id])
     
 

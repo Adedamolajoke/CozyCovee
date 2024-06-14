@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Pressable, Text, TextInput, Touchable, Image } from 'react-native'
 import { View } from 'react-native'
 import tailwind from 'twrnc'
-import CustomButton from './utils/Button'
+import CustomButton from '../utils/Button'
 
 const HealthRate = ({navigation}) => {
   const [healthRate, setHealthRate] = useState(null)
@@ -40,7 +40,7 @@ const HealthRate = ({navigation}) => {
   return (
     <View style={tailwind`py-12 px-2 flex flex-col  gap-3`}>
       <View style={tailwind`flex flex-row justify-start items-center gap-3`}>
-        <Image source={require('../assets/1.png')} />
+        <Image source={require('../../assets/1.png')} />
       </View>
         <View style={tailwind`flex flex-col gap-3`}>
           <Text style={tailwind`font-semibold text-lg`}>Rate your current health</Text>

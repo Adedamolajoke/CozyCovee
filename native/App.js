@@ -1,13 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer, getFocusedRouteNameFromRoute, useRoute } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HealthGoals from './components/Healthgoals';
-import Hobby from './components/Hobby';
-import AllSet from './components/AlllSet';
-import Onboard from './components/Onboard';
+import Onboard from './components/onboarding/Onboard';
 import { AppNavigator, OnboardNavigator } from './Routes';
 
 
+{/* TODO: Make onboard responsive */}
 
 export default function App() {
   
@@ -21,9 +19,9 @@ export default function App() {
       screenOptions={{header: ()=> null}}
       >
         <Stack.Screen name="main" component={AppNavigator} />
-        <Stack.Screen name="onboard" component={Onboard} />
+        <Stack.Screen name="onboard" component={Onboard} />   
         <Stack.Screen name="auth" component={OnboardNavigator} />
-        {/* */}
+        
       </Stack.Navigator>
       </NavigationContainer>
   

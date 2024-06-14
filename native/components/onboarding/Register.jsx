@@ -5,8 +5,8 @@ import { StyleSheet } from 'react-native'
 import { View,Text } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import tailwind from 'twrnc'
-import CustomButton from './utils/Button'
-import BackButton from './utils/BackButton'
+import CustomButton from '../utils/Button'
+import BackButton from '../utils/BackButton'
 
 const Register = ({setisLogin, navigation}) => {
     const [text, setText] = useState('')
